@@ -12,14 +12,18 @@ taskRepository.add = function(task, callback) {
 }
 
 taskRepository.changeStatus = function(taskId, callback) {
-  connector.connect(function(err, db) {
-    var tasks = db.collection('tasks');
-    db.collection('tasks').find({_id: new mongo.ObjectId(taskId)}).snapshot().forEach(function(task) {
-      task.isDone = !task.isDone;
-      tasks.save(task);
-      callback(task);
+  if (taskId.length !== 24) {
+    throw new Error('invalid object id');
+  } else {
+    connector.connect(function(err, db) {
+      var tasks = db.collection('tasks');
+      db.collection('tasks').find({_id: new mongo.ObjectId(taskId)}).snapshot().forEach(function(task) {
+        task.isDone = !task.isDone;
+        tasks.save(task);
+        callback(task);
+      });
     });
-  });
+  }
 }
 
 taskRepository.findAll = function(callback) {

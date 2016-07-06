@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "PORT=3001 npm run start-backend & npm run start-frontend",
-    "start-backend": "cd backend && node ./bin/www >> log.log",
-    "start-frontend": "cd frontend && node server.js >> log.log",
+    "start-backend": "cd backend && node ./bin/www 1>> log.log 2>> error.log",
+    "start-frontend": "cd frontend && node server.js 1>> log.log 2>> error.log",
     "build": "cd frontend && webpack --config ./webpack.prod.config.js --progress --colors"
   },
   "author": "Piotr Sroczkowski",
