@@ -2,6 +2,7 @@
 *.swp
 *.swo
 
+env.sh
 frontend/public/bundle.js
 bower_components
 node_modules
