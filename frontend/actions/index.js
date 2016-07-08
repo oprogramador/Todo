@@ -1,8 +1,7 @@
-export const HELLO_WORLD = 'HELLO_WORLD'
+export const TASK_S = 'TASK_S'
 
-export const helloWorld = () => {
-  console.log('helloWorld actions')
+export const tasks = () => {
   return {
-    type: HELLO_WORLD
+    type: TASK_S
   }
 }

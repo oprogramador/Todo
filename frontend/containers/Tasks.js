@@ -1,24 +1,24 @@
 import { connect } from 'react-redux'
-import { HELLO_WORLD } from './../actions'
-import Hello from './../components/Hello'
+import { TASK_S } from './../actions'
+import Task from './../components/Task'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    message: state.helloWorld.message
+    message: state.tasks.message
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
-      dispatch({ type: HELLO_WORLD })
+      dispatch({ type: TASK_S })
     }
   }
 }
 
-const HelloWorld = connect(
+const Tasks = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Hello)
+)(Task)
 
-export default HelloWorld
+export default Tasks

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-const Hello = ({ onClick, message }) => {
+const Task = ({ onClick, message }) => {
   return (
     <div>
       <h1>{ message }</h1>
@@ -9,9 +9,9 @@ const Hello = ({ onClick, message }) => {
   )
 }
 
-Hello.propTypes = {
+Task.propTypes = {
   onClick: PropTypes.func.isRequired,
   message: PropTypes.string.isRequired
 }
 
-export default Hello
+export default Task

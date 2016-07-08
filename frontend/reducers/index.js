@@ -1,18 +1,17 @@
 import { combineReducers } from 'redux'
-import { HELLO_WORLD } from './../actions'
+import { TASK_S } from './../actions'
 
-const helloWorld = (state = { message: 'Hello' }, action) => {
+const tasks = (state = { message: 'Task' }, action) => {
   switch (action.type) {
-    case HELLO_WORLD:
-      console.log('reducer: helloWorld')
-      return Object.assign({}, state, { message: 'Hello, World!' })
+    case TASK_S:
+      return Object.assign({}, state, { message: 'Task, s!' })
     default:
       return state
   }
 }
 
-const helloReducer = combineReducers({
-  helloWorld
+const taskReducer = combineReducers({
+  tasks
 })
 
-export default helloReducer
+export default taskReducer
