@@ -1,4 +1,4 @@
-import '../scss/base'
+import '../sass/base'
 import 'babel-polyfill'
 
 import React from 'react'

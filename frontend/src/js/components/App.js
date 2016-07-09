@@ -22,8 +22,8 @@ class App extends React.Component {
           this.tasks.map(function(task) {
             return (
               <div key={ Math.random() } className={ task.isDone ? 'task-done' : 'task-waiting' }>
-                <span>{ task.msg }</span>
-                <span>
+                <span className={ 'left' }>{ task.msg }</span>
+                <span className={ 'right' }>
                   <div>{ task.date }</div>
                   <div>{ task.isDone ? 'Done' : 'Waiting' }</div>
                 </span>
@@ -42,4 +42,3 @@ class App extends React.Component {
 }
 
 export default App
-
