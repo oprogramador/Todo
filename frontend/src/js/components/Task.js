@@ -3,14 +3,33 @@ import React from 'react'
 var qwest = require('qwest')
 
 class Tasks extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = props.state;
+    this.state.isLoading = false;
+  }
+
+  onClick() {
+    var that = this;
+    that.state.isLoading = true;
+    that.forceUpdate();
+    qwest
+      .put(CONFIG.BACKEND_ADDRESS+'/task/changeStatus/'+this.state._id)
+      .then((xhr, response) => {
+        that.setState(response);
+        that.state.isLoading = false;
+        that.forceUpdate();
+      });
+  }
+
   render() {
-    var task = this.props.data;
     return (
-      <div className={ task.isDone ? 'task-done' : 'task-waiting' }>
-        <span className={ 'left' }>{ task.msg }</span>
+      <div onClick={ () => { return this.onClick.apply(this, arguments) } } className={ this.state.isDone ? 'task-done' : 'task-waiting' }>
+        <span className={ 'left' }>{ this.state.msg }</span>
+        <span className={ this.state.isLoading ? 'loading-active' : 'loading-not-active' }></span>
         <span className={ 'right' }>
-          <div>{ task.date }</div>
-          <div>{ task.isDone ? 'Done' : 'Waiting' }</div>
+          <div>{ this.state.date }</div>
+          <div>{ this.state.isDone ? 'Done' : 'Waiting' }</div>
         </span>
       </div>
     )

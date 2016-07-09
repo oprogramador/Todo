@@ -2,9 +2,9 @@
   "name": "Todo",
   "version": "1.0.0",
   "scripts": {
-    "start": "PORT=3001 npm run start-backend & npm run start-frontend",
-    "start-backend": "cd backend && node ./bin/www 1>> log.log 2>> error.log",
-    "start-frontend": "cd frontend && node server.js 1>> log.log 2>> error.log",
+    "start": "npm run start-backend & npm run start-frontend",
+    "start-backend": "cd backend && PORT=3001 node ./bin/www 1>> log.log 2>> error.log",
+    "start-frontend": "cd frontend && BACKEND_ADDRESS=http://localhost:3001 node server.js 1>> log.log 2>> error.log",
     "build": "cd frontend && webpack --config ./webpack.config.js --progress --colors"
   },
   "author": "Piotr Sroczkowski",

@@ -7,7 +7,7 @@ class Tasks extends React.Component {
   componentDidMount() {
     var that = this;
     qwest
-      .get('http://localhost:3001/task/all')
+      .get(CONFIG.BACKEND_ADDRESS+'/task/all')
       .then((xhr, response) => {
         that.tasks = response;
         that.forceUpdate();
@@ -21,7 +21,7 @@ class Tasks extends React.Component {
         {
           this.tasks.map((task) => {
             return (
-              <Task key={ Math.random() } data={ task }></Task>
+              <Task key={ Math.random() } state={ task }></Task>
             )
           })
         }

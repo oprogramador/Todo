@@ -19,6 +19,9 @@ app.get("/app.js", function(req, res) {
 app.get("/app.css", function(req, res) {
   res.sendFile(__dirname + '/build/app.css')
 })
+app.get('/config.js', function(req, res) {
+  res.send('const CONFIG = '+JSON.stringify({BACKEND_ADDRESS: process.env.BACKEND_ADDRESS}));
+})
 
 app.listen(port, function(error) {
   if (error) {
