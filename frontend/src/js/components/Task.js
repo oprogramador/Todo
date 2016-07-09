@@ -1,8 +1,9 @@
+import '../../sass/task'
 import React from 'react'
 
 var qwest = require('qwest')
 
-class Tasks extends React.Component {
+class Task extends React.Component {
   constructor(props) {
     super(props);
     this.state = props.state;
@@ -24,7 +25,7 @@ class Tasks extends React.Component {
 
   render() {
     return (
-      <div onClick={ () => { return this.onClick.apply(this, arguments) } } className={ this.state.isDone ? 'task-done' : 'task-waiting' }>
+      <div onClick={ this.onClick.bind(this) } className={ this.state.isDone ? 'task-done' : 'task-waiting' }>
         <span className={ 'left' }>{ this.state.msg }</span>
         <span className={ this.state.isLoading ? 'loading-active' : 'loading-not-active' }></span>
         <span className={ 'right' }>
@@ -36,4 +37,4 @@ class Tasks extends React.Component {
   }
 }
 
-export default Tasks
+export default Task

@@ -14,6 +14,11 @@ class Tasks extends React.Component {
       });
   }
 
+  addTask(task) {
+    this.tasks.push(task);
+    this.forceUpdate();
+  }
+
   render() {
     if (this.tasks && this.tasks.map) {
       return (
