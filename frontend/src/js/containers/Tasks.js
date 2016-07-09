@@ -1,24 +1,38 @@
-import { connect } from 'react-redux'
-import { TASK_S } from './../actions'
+import React from 'react'
 import Task from './../components/Task'
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    message: state.tasks.message
-  }
-}
+var qwest = require('qwest')
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onClick: () => {
-      dispatch({ type: TASK_S })
+class Tasks extends React.Component {
+  componentDidMount() {
+    var that = this;
+    qwest
+      .get('http://localhost:3001/task/all')
+      .then((xhr, response) => {
+        that.tasks = response;
+        that.forceUpdate();
+      });
+  }
+
+  render() {
+    if (this.tasks && this.tasks.map) {
+      return (
+        <div>
+        {
+          this.tasks.map((task) => {
+            return (
+              <Task key={ Math.random() } data={ task }></Task>
+            )
+          })
+        }
+        </div>
+      )
+    } else {
+      return (
+        <div>Loading...</div>
+      )
     }
   }
 }
-
-const Tasks = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Task)
 
 export default Tasks
