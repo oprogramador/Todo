@@ -5,7 +5,7 @@
     "start": "PORT=3001 npm run start-backend & npm run start-frontend",
     "start-backend": "cd backend && node ./bin/www 1>> log.log 2>> error.log",
     "start-frontend": "cd frontend && node server.js 1>> log.log 2>> error.log",
-    "build": "cd frontend && webpack --config ./webpack.prod.config.js --progress --colors"
+    "build": "cd frontend && webpack --config ./webpack.config.js --progress --colors"
   },
   "author": "Piotr Sroczkowski",
   "license": "MIT",
@@ -20,6 +20,7 @@
     "isomorphic-fetch": "^2.2.1",
     "mongodb": "~2.1.18",
     "morgan": "~1.7.0",
+    "postcss-loader": "^0.9.1",
     "qwest": "^4.4.4",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",

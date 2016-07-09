@@ -13,6 +13,12 @@ app.use(webpackHotMiddleware(compiler))
 app.get("/", function(req, res) {
   res.sendFile(__dirname + '/index.html')
 })
+app.get("/app.js", function(req, res) {
+  res.sendFile(__dirname + '/build/app.js')
+})
+app.get("/app.css", function(req, res) {
+  res.sendFile(__dirname + '/build/app.css')
+})
 
 app.listen(port, function(error) {
   if (error) {
