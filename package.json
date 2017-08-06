@@ -7,7 +7,7 @@
     "start-frontend": "cd frontend && BACKEND_ADDRESS=http://localhost:3001 node server.js 1>> log.log 2>> error.log",
     "build": "cd frontend && webpack --config ./webpack.config.js --progress --colors"
   },
-  "author": "Piotr Sroczkowski",
+  "author": "oprogramador",
   "license": "MIT",
   "dependencies": {
     "autoprefixer-core": "^6.0.1",
